@@ -14,6 +14,24 @@ function getList() {
     }, 10);
   });
 }
+// Exercise 1
+let p = document.querySelector("#error");
+let ul = document.querySelector("#list");
+
+// Exercise 2 and 3
+let result = getList();
+result
+  .then((hobbits) => {
+    console.log(hobbits);
+    hobbits.forEach((item)=>{
+      let li =document.createElement("li")
+      li.textContent = item;
+      ul.appendChild(li)
+    })
+  })
+  .catch((err) => {
+    p.textContent = err.message;
+  });
 
 // TODO: Handle the resolved or rejected states of the promise
 
@@ -21,4 +39,3 @@ function getList() {
 // Render the list of hobbits as list items within the unordered list with id="list" (check the index.html file)
 
 // TODO: If the promise rejects with the failure object
-// Display the failure message in the paragraph element with id="error" (check index.html file)
